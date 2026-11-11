@@ -22,7 +22,7 @@ Detects and masks emails, phone numbers, SSNs, credit card numbers, and street a
 ```python
 from promptguard.pii import redact
 
-result = redact("Email me at tony@example.com or call 469-833-2503.")
+result = redact("Email me at tony@example.com or call 214-555-0147.")
 print(result.text)      # "Email me at [EMAIL_1] or call [PHONE_1]."
 print(result.restore()) # original text, PII restored
 ```
@@ -68,8 +68,6 @@ ruff check .
 - The injection detector and secret patterns are tuned for English-language text and common formats; they are not internationalized.
 - This has not been tested against adversarial red-teaming at scale. It's a starting point, not a certified control.
 - Regexes are inherently imperfect for address detection in particular; the address pattern here is intentionally narrow (US-style street suffixes) to avoid excessive false positives.
-- Tested against real attempted manipulation on a production voice AI system (Owens World Air's call-screening agent): it correctly flagged a direct "ignore previous instructions" attempt, but missed several authority/pretext-based attempts (e.g. a caller claiming to be "the administrator" in a "debugging session"). This is a known gap: the current patterns target direct jailbreak phrasing, not social-engineering-style authority claims.
-- Tested against real attempted manipulation on a production voice AI system (Owens World Air's call-screening agent): it correctly flagged a direct "ignore previous instructions" attempt, but missed several authority/pretext-based attempts (e.g. a caller claiming to be "the administrator" in a "debugging session"). This is a known gap: the current patterns target direct jailbreak phrasing, not social-engineering-style authority claims.
 - Tested against real attempted manipulation on a production voice AI system (Owens World Air's call-screening agent): it correctly flagged a direct "ignore previous instructions" attempt, but missed several authority/pretext-based attempts (e.g. a caller claiming to be "the administrator" in a "debugging session"). This is a known gap: the current patterns target direct jailbreak phrasing, not social-engineering-style authority claims.
 
 ## OWASP Top 10 for LLM Applications (2025) mapping

@@ -7,8 +7,8 @@ Run it directly:
 """
 
 from promptguard.injection import check_injection
-from promptguard.pii import redact
 from promptguard.output_guard import check_output
+from promptguard.pii import redact
 
 # --- A fake call transcript, like what Deepgram STT might hand you ---
 caller_said = (

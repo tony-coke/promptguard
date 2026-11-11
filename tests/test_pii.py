@@ -9,7 +9,7 @@ def test_redacts_email():
 
 
 def test_redacts_phone():
-    r = redact("Call 469-833-2503 anytime.")
+    r = redact("Call 214-555-0147 anytime.")
     assert "[PHONE_1]" in r.text
 
 
